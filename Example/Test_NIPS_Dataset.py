@@ -7,11 +7,11 @@ import pickle
 def find_log_perplexity(train_cropus,test_cropus,num_topic):
     
     lda = gensim.models.ldamodel.LdaModel(corpus=train_cropus,\
-    id2word=a.id2word, num_topics=num_topic, update_every=0, passes=1)
+    id2word=a.id2word, num_topics=num_topic, update_every=0, passes=5)
     return lda.log_perplexity(test_cropus)
 
 if __name__ == '__main__':
-    num_topic = range(10,80,10)
+    num_topic = range(10,200,10)
     sample_rate = 0.8
 
     a = gensim.corpora.UciCorpus('../Data/docword.nips.txt','../Data/vocab.nips.txt')
@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     print(log_perplexity)
 
-    pickle.dump(log_perplexity, open("Data/NIPS.data", "w+"))
+    pickle.dump(log_perplexity, open("../Data/NIPS.data", "w+"))
 
     # plt.plot(num_topic, log_perplexity, '-o', linewidth=2.0)
     # plt.xlabel('Number of topics')
