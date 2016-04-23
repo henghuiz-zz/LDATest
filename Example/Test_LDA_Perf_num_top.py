@@ -15,7 +15,7 @@ def Multiple_test_LDA(num_topic):
 
 if __name__ == '__main__':
     pool = Pool(processes=8)              # start 4 worker processes
-    num_topic = range(5, 30, 2)
+    num_topic = range(5, 30, 1)
 
     Loss = pool.map(Multiple_test_LDA, num_topic)
     Loss = np.array(Loss)
