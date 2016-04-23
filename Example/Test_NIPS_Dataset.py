@@ -12,7 +12,7 @@ def find_log_perplexity(train_cropus,test_cropus,num_topic):
 
 if __name__ == '__main__':
     num_topic = range(10,200,10)
-    sample_rate = 0.8
+    sample_rate = 0.6
 
     a = gensim.corpora.UciCorpus('../Data/docword.nips.txt','../Data/vocab.nips.txt')
     wordid = a.id2word
