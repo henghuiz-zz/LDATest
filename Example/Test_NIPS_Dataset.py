@@ -19,7 +19,7 @@ if __name__ == '__main__':
     b = [i for i in a]
     shuffle(b)
     num_doc = len(b)
-    num_sample = np.ceil(num_doc*sample_rate)
+    num_sample = int(num_doc*sample_rate)
     train_cropus = b[0:num_sample]
     test_cropus = b[num_sample:num_doc]
     
