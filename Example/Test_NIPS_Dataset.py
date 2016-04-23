@@ -1,6 +1,5 @@
 import numpy as np
 import gensim
-import matplotlib.pyplot as plt
 from joblib import Parallel, delayed
 from random import shuffle
 import pickle
@@ -26,6 +25,8 @@ if __name__ == '__main__':
     
     log_perplexity = Parallel(n_jobs=8)(delayed(find_log_perplexity)(train_cropus,test_cropus,i) for i in num_topic)
     log_perplexity = np.array(log_perplexity)
+
+    print(log_perplexity)
 
     pickle.dump(log_perplexity, 'Data/NIPS.data')
 
