@@ -1,7 +1,8 @@
 import numpy as np
 import gensim
 import matplotlib.pyplot as plt
-from multiprocessing import Pool
+from joblib import Parallel, delayed
+import multiprocessing
 
 def find_log_perplexity(num_topic):
     a = gensim.corpora.UciCorpus('../Data/docword.nips.txt','../Data/vocab.nips.txt')
@@ -10,10 +11,9 @@ def find_log_perplexity(num_topic):
     return lda.log_perplexity(a)
 
 if __name__ == '__main__':
-    pool = Pool(processes=8)              # start 4 worker processes
     num_topic = range(10,100,10)
 
-    log_perplexity = pool.map(find_log_perplexity, num_topic)
+    log_perplexity = Parallel(n_jobs=8)(delayed(find_log_perplexity)(i) for i in num_topic)
     log_perplexity = np.array(log_perplexity)
 
     plt.plot(num_topic, log_perplexity, '-o', linewidth=2.0)
