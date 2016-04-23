@@ -16,11 +16,12 @@ def Multiple_test_LDA(ave_len):
 
 if __name__ == '__main__':
     pool = Pool(processes=8)
-    ave_len = range(50, 1000, 50)
+    ave_len = range(50, 2000, 50)
 
     Loss = pool.map(Multiple_test_LDA, ave_len)
     Loss = np.array(Loss)
-    io.savemat('../Data/MSE_ave_len.mat', {'loss':Loss})
+    print(Loss)
+    io.savemat('../Data/MSE_ave_len.mat', {'loss':Loss,'x':ave_len})
 
 
     # plt.plot(ave_len, Loss, '-o', linewidth=2.0)
