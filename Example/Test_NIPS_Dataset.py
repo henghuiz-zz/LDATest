@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     print(log_perplexity)
 
-    pickle.dump(log_perplexity, 'Data/NIPS.data')
+    pickle.dump(log_perplexity, open("Data/NIPS.data", "wb"))
 
     # plt.plot(num_topic, log_perplexity, '-o', linewidth=2.0)
     # plt.xlabel('Number of topics')
