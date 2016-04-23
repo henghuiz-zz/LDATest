@@ -7,12 +7,12 @@ import multiprocessing
 def find_log_perplexity(num_topic):
     a = gensim.corpora.UciCorpus('../Data/docword.nips.txt','../Data/vocab.nips.txt')
     lda = gensim.models.ldamodel.LdaModel(corpus=a,\
-    id2word=a.id2word, num_topics=50, update_every=0, passes=1)
+    id2word=a.id2word, num_topics=num_topic, update_every=0, passes=1)
     return lda.log_perplexity(a)
 
 if __name__ == '__main__':
-    num_topic = range(10,100,10)
-
+    num_topic = range(10,80,10)
+    
     log_perplexity = Parallel(n_jobs=8)(delayed(find_log_perplexity)(i) for i in num_topic)
     log_perplexity = np.array(log_perplexity)
 
