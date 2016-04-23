@@ -1,23 +1,29 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import Test_LDA_Perfomance
+from multiprocessing import Pool
+import scipy.io as io
 
-num_word_gen = range(50, 500, 50)
-num_word_gen = np.array(num_word_gen)
-Loss = np.zeros(num_word_gen.shape)
-
-num_try = 2
-
-for i in range(len(num_word_gen)):
-    tmp = 0.0;
+def Multiple_test_LDA(num_word_gen):
+    num_try = 1000
+    tmp = 0.0
     for tr in range(num_try):
-        tmp+= Test_LDA_Perfomance.Try_Syn_Data(num_word_gen = num_word_gen[i])
-    tmp/=num_try
-    Loss[i] = tmp
+        tmp += Test_LDA_Perfomance.Try_Syn_Data(num_word_gen=num_word_gen)
+    tmp /= num_try
+    return tmp
 
-plt.plot(num_word_gen, Loss, '-o', linewidth=2.0)
-plt.xlabel('Number of words used')
-plt.ylabel('MSE')
-plt.title('MSE versus number of word used')
-plt.savefig('../Data/MSE_word_gen.png')
-plt.show()
+if __name__ == '__main__':
+    pool = Pool(processes=8)
+    num_word_gen = range(50, 500, 25)
+
+    Loss = pool.map(Multiple_test_LDA, num_word_gen)
+    Loss = np.array(Loss)
+    print(Loss)
+    io.savemat('../Data/MSE_num_word.mat', {'loss':Loss,'x':num_word_gen})
+
+    # plt.plot(num_word_gen, Loss, '-o', linewidth=2.0)
+    # plt.xlabel('Number of words used')
+    # plt.ylabel('MSE')
+    # plt.title('MSE versus number of word used')
+    # plt.savefig('../Data/MSE_word_gen.png')
+    # plt.show()
