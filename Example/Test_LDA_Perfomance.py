@@ -9,7 +9,9 @@ def Try_Syn_Data(num_doc_gen = 50,
                  ave_len = 200):
 
     TestSample = LDATest.GenCorpus.LDATestSample(num_topic = num_topic,
-                                                 num_doc_gen = num_doc_gen)
+                                                 num_doc_gen = num_doc_gen,
+                                                 num_word_gen= num_word_gen,
+                                                 ave_len = ave_len)
     
     lda = gensim.models.ldamodel.LdaModel(corpus=TestSample.Corpus,
                                           num_topics=num_topic,
