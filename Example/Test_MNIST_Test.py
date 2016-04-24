@@ -14,12 +14,15 @@ mycorpus = []
 for doc in Test:
     corpus_item = []
     for i in range(784):
-        corpus_item.append((i,doc[i]))
+        idt = 0
+        if doc[i] > 100:
+            idt = 1
+        corpus_item.append((i,idt))
     mycorpus.append(corpus_item)
 
 print('Hello')
 
-lda = gensim.models.ldamodel.LdaModel(corpus=mycorpus, num_topics=100, update_every=0, passes=1)
+lda = gensim.models.ldamodel.LdaModel(corpus=mycorpus, num_topics=20, update_every=0, passes=1)
 Beta = lda.state.get_lambda()
 Beta = np.array(Beta)
 
