@@ -11,7 +11,7 @@ def Multiple_test_LDA(num_topic):
     for tr in range(num_try):
         tmp+= Test_LDA_Perfomance.Try_Syn_Data(num_topic = num_topic)
     tmp/=num_try
-    return tmp/np.sqrt(num_topic)
+    return tmp*np.sqrt(num_topic)
 
 if __name__ == '__main__':
     pool = Pool(processes=8)              # start 4 worker processes

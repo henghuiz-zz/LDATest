@@ -24,9 +24,9 @@ if __name__ == '__main__':
     io.savemat('../Data/MSE_ave_len.mat', {'loss':Loss,'x':ave_len})
 
 
-    # plt.plot(ave_len, Loss, '-o', linewidth=2.0)
-    # plt.xlabel('Average length of documents')
-    # plt.ylabel('MSE')
-    # plt.title('MSE versus average length of documents')
-    # plt.savefig('../Data/MSE_ave_len.png')
-    # plt.show()
+    plt.plot(ave_len, Loss, '-o', linewidth=2.0)
+    plt.xlabel('Average length of documents')
+    plt.ylabel('MSE')
+    plt.title('MSE versus average length of documents')
+    plt.savefig('../Data/MSE_ave_len.png')
+    plt.show()
