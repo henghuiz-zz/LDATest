@@ -26,7 +26,7 @@ lda = gensim.models.ldamodel.LdaModel(corpus=mycorpus,
                                       num_topics=20,
                                       alpha='auto',
                                       update_every=1,
-                                      passes=1)
+                                      passes=10)
 Beta = lda.state.get_lambda()
 Beta = np.array(Beta)
 

@@ -17,7 +17,13 @@ for doc in Test:
 
 print('Hello')
 
-lda = gensim.models.ldamodel.LdaModel(corpus=mycorpus, num_topics=100, update_every=0, passes=10)
+lda = gensim.models.ldamodel.LdaModel(corpus=mycorpus,
+                                      num_topics=20,
+                                      alpha='auto',
+                                      chunksize=10000,
+                                      update_every=1,
+                                      passes=10)
+                                      
 Beta = lda.state.get_lambda()
 Beta = np.array(Beta)
 
