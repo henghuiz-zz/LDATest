@@ -4,10 +4,10 @@ import LDATest.CmpArtResu
 import gensim
 import LDATest.CmpKMeans
 
-def Try_Syn_Data(num_doc_gen=100,
+def Try_Syn_Data(num_doc_gen=200,
                  num_word_gen=100,
-                 num_topic=10,
-                 ave_len=200):
+                 num_topic=5,
+                 ave_len=50):
     TestSample = LDATest.GenCorpus.LDATestSample(num_topic=num_topic,
                                                  num_doc_gen=num_doc_gen,
                                                  num_word_gen=num_word_gen,
@@ -15,9 +15,8 @@ def Try_Syn_Data(num_doc_gen=100,
 
     lda = gensim.models.ldamodel.LdaModel(corpus=TestSample.Corpus,
                                           num_topics=num_topic,
-                                          update_every=1,
-                                          alpha='auto',
-                                          passes=10)
+                                          update_every=0,
+                                          passes=5)
 
     Re2Pr = LDATest.CmpArtResu.AdjustLabel(TestSample.Beta.transpose(), lda.state.get_lambda())
 

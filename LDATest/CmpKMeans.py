@@ -9,7 +9,7 @@ def Corpus_K_Means(TestSample,num_topic):
     W = TestSample.Word
     W = np.array(W,dtype='double')
     
-    estimators = KMeans(n_clusters=num_topic)
+    estimators = KMeans(n_clusters=num_topic,n_init=5)
     estimators.fit(W)
     BetaPredict=estimators.cluster_centers_
 

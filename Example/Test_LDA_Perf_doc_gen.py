@@ -22,7 +22,7 @@ def Multiple_test_LDA(num_doc_gen):
 if __name__ == '__main__':
     
     pool = Pool(processes=8)
-    num_doc_gen = range(100, 201, 10)
+    num_doc_gen = range(100, 900, 100)
     num_doc_gen = np.array(num_doc_gen)
     Loss = pool.map(Multiple_test_LDA, num_doc_gen)
     Loss = np.array(Loss)
