@@ -12,6 +12,9 @@ def JSP(p,q):
     m = (p+q)*0.5
     jsd = 0.5*entropy(pk=p, qk=m) + 0.5*entropy(pk=q,qk=m)
     return jsd
+    
+def DotProduct(p,q):
+    return np.vdot(p,q)
 
 def AdjustLabel(BetaReal,BetaPredict):
     BetaReal = np.array(BetaReal)
@@ -32,9 +35,9 @@ def AdjustLabel(BetaReal,BetaPredict):
         for i in range(lenQ):
             dist = np.zeros(lenQ)
             for j in range(lenQ):
-                dist[j] = JSP(p=BetaReal[queryReal[i],:],
+                dist[j] = DotProduct(p=BetaReal[queryReal[i],:],
                               q= BetaPredict[queryPredict[j],:])
-            favor = np.argmin(dist)
+            favor = np.argmax(dist)
             if not np.isscalar(favor):
                 favor = favor[0]
             vote[favor] += 1
@@ -51,9 +54,9 @@ def AdjustLabel(BetaReal,BetaPredict):
                 mostfavor = mostfavor[0]
             dist = np.zeros(lenQ)
             for i in range(lenQ):
-                dist[i] = JSP(p=BetaReal[queryReal[i],:],
+                dist[i] = DotProduct(p=BetaReal[queryReal[i],:],
                               q= BetaPredict[mostfavor,:])
-            favor = np.argmin(dist)
+            favor = np.argmax(dist)
             if not np.isscalar(favor):
                 favor = favor[0]
             mapping[queryReal.pop(favor)] = queryPredict.pop(mostfavor)

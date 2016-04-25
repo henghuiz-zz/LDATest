@@ -2,9 +2,9 @@ import numpy as np
 import LDATest.GenCorpus
 import LDATest.CmpArtResu
 import gensim
+import LDATest.CmpKMeans
 
-
-def Try_Syn_Data(num_doc_gen=50,
+def Try_Syn_Data(num_doc_gen=100,
                  num_word_gen=100,
                  num_topic=10,
                  ave_len=200):
@@ -15,8 +15,9 @@ def Try_Syn_Data(num_doc_gen=50,
 
     lda = gensim.models.ldamodel.LdaModel(corpus=TestSample.Corpus,
                                           num_topics=num_topic,
-                                          update_every=0,
-                                          passes=1)
+                                          update_every=1,
+                                          alpha='auto',
+                                          passes=10)
 
     Re2Pr = LDATest.CmpArtResu.AdjustLabel(TestSample.Beta.transpose(), lda.state.get_lambda())
 
@@ -26,11 +27,15 @@ def Try_Syn_Data(num_doc_gen=50,
         ThetaPredict[i, :] = zip(*lda.get_document_topics(TestSample.Corpus[i], minimum_probability=0))[1]
     Loss = 0
     ThetaPredict = ThetaPredict[:, Re2Pr]
-
-    for i in range(num_topic):
-        Loss += np.square(np.linalg.norm(ThetaReal[:, i] - ThetaPredict[:, i]))
-
-    return Loss / num_doc_gen
+    
+    Loss = np.square(np.linalg.norm(ThetaPredict-ThetaReal))  
+    
+    #for i in range(num_topic):
+    #    Loss += np.square(np.linalg.norm(ThetaReal[:, i] - ThetaPredict[:, i]))
+        
+    KLoss = LDATest.CmpKMeans.Corpus_K_Means(TestSample,num_topic)
+    
+    return (Loss/num_doc_gen, KLoss/num_doc_gen)
 
 
 if __name__ == '__main__':
