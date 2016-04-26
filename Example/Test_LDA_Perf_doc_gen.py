@@ -7,7 +7,7 @@ import os
 import scipy.io as io
 
 def Multiple_test_LDA(num_doc_gen):
-    num_try = 100
+    num_try = 200
     tmp = 0.0
     ktmp = 0.0
     for tr in range(num_try):
@@ -22,7 +22,7 @@ def Multiple_test_LDA(num_doc_gen):
 if __name__ == '__main__':
     
     pool = Pool(processes=8)
-    num_doc_gen = range(100, 900, 100)
+    num_doc_gen = range(50, 401, 50)
     num_doc_gen = np.array(num_doc_gen)
     Loss = pool.map(Multiple_test_LDA, num_doc_gen)
     Loss = np.array(Loss)

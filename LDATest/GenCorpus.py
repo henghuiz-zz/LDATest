@@ -23,7 +23,8 @@ class LDATestSample:
 
         for i in range(num_doc_gen):
             mcorpus.append([])
-            doc_len = np.random.poisson(lam=ave_len)
+            #doc_len = np.random.poisson(lam=ave_len)
+            doc_len = ave_len
             theta = Theta[:, i]
             doc_beta = Beta.dot(theta)
 
