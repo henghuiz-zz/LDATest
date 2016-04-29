@@ -7,7 +7,7 @@ import os
 import scipy.io as io
 
 def Multiple_test_LDA(num_doc_gen):
-    num_try = 200
+    num_try = 1000
     tmp = 0.0
     ktmp = 0.0
     for tr in range(num_try):
@@ -39,4 +39,4 @@ if __name__ == '__main__':
     plt.title('MSE versus number of documents generated in the corpus')
     plt.legend(loc='upper center')
     plt.savefig('../Data/MSE_doc_gen.png')
-    plt.show()
+    #plt.show()

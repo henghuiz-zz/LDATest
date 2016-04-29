@@ -7,7 +7,7 @@ import os
 import scipy.io as io
 
 def Multiple_test_LDA(ave_len):
-    num_try = 200
+    num_try = 1000
     tmp = 0.0
     ktmp = 0.0
     for tr in range(num_try):
@@ -40,4 +40,4 @@ if __name__ == '__main__':
     plt.title('MSE versus average length of documents')
     plt.legend(loc='upper center')
     plt.savefig('../Data/MSE_ave_len.png')
-    plt.show()
+    #plt.show()

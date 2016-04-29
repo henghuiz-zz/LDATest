@@ -9,7 +9,7 @@ import os
 import scipy.io as io
 
 def Multiple_test_LDA(num_word_gen):
-    num_try = 2
+    num_try = 200
     tmp = 0.0
     ktmp = 0.0
     for tr in range(num_try):
@@ -24,7 +24,7 @@ def Multiple_test_LDA(num_word_gen):
 if __name__ == '__main__':
     
     pool = Pool(processes=8)
-    num_word_gen = range(60,131,10)
+    num_word_gen = range(50,451,50)
     num_word_gen = np.array(num_word_gen)
     Loss = pool.map(Multiple_test_LDA, num_word_gen)
     Loss = np.array(Loss)
@@ -42,4 +42,4 @@ if __name__ == '__main__':
     plt.title('MSE versus vocabulary size')
     plt.legend(loc='upper center')
     plt.savefig('../Data/MSE_word_gen.png')
-    plt.show()
+    #plt.show()

@@ -8,12 +8,12 @@ import scipy.io as io
 def find_log_perplexity(train_cropus,test_cropus,num_topic):
     
     lda = gensim.models.ldamodel.LdaModel(corpus=train_cropus,\
-    num_topics=num_topic, update_every=1,alpha='auto', passes=5)
+    num_topics=num_topic, update_every=1,alpha='auto', passes=20)
     return lda.log_perplexity(test_cropus)
 
 if __name__ == '__main__':
-    num_topic = range(10,200,10)
-    sample_rate = 0.6
+    num_topic = range(10,50,5)
+    sample_rate = 0.7
 
     a = gensim.corpora.UciCorpus('../Data/docword.nips.txt','../Data/vocab.nips.txt')
     wordid = a.id2word
