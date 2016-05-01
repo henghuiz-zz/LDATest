@@ -30,20 +30,22 @@ if __name__ == '__main__':
 
     for i in range(num_folds):
         test_cropus = b[i * subset_size:][:subset_size]
+        print len(test_cropus)
         train_cropus = b[:i * subset_size] + b[(i + 1) * subset_size:]
-
-        log_perplexity = Parallel(n_jobs=8)(
-            delayed(find_log_perplexity)(train_cropus, test_cropus, i) for i in num_topic)
-        log_perplexity = np.array(log_perplexity)
-        print log_perplexity.shape
-
-        cv_result += log_perplexity
-
-    io.savemat('../Data/NIPS.mat', {'num_topic': num_topic, 'log_perplexity': cv_result})
-
-    plt.plot(num_topic, cv_result, '-o', linewidth=2.0)
-    plt.xlabel('Number of topics')
-    plt.ylabel('Log perplexity')
-    plt.title('Log perplexity versus number of topic')
-    plt.savefig('../Data/NIPS.png')
-    plt.show()
+        print len(train_cropus)        
+        
+#        log_perplexity = Parallel(n_jobs=8)(
+#            delayed(find_log_perplexity)(train_cropus, test_cropus, i) for i in num_topic)
+#        log_perplexity = np.array(log_perplexity)
+#        print log_perplexity.shape
+#
+#        cv_result += log_perplexity
+#
+#    io.savemat('../Data/NIPS.mat', {'num_topic': num_topic, 'log_perplexity': cv_result})
+#
+#    plt.plot(num_topic, cv_result, '-o', linewidth=2.0)
+#    plt.xlabel('Number of topics')
+#    plt.ylabel('Log perplexity')
+#    plt.title('Log perplexity versus number of topic')
+#    plt.savefig('../Data/NIPS.png')
+#    plt.show()

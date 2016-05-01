@@ -18,7 +18,7 @@ for doc in Test:
 print('Hello')
 
 lda = gensim.models.ldamodel.LdaModel(corpus=mycorpus,
-                                      num_topics=20,
+                                      num_topics=5,
                                       alpha='auto',
                                       chunksize=10000,
                                       update_every=1,
@@ -27,4 +27,4 @@ lda = gensim.models.ldamodel.LdaModel(corpus=mycorpus,
 Beta = lda.state.get_lambda()
 Beta = np.array(Beta)
 
-scipy.io.savemat('../Data/MNIST_Train.mat', {'Beta':Beta})
+scipy.io.savemat('../Data/MNIST_Train5.mat', {'Beta':Beta})
