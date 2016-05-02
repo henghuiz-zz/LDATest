@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-
-
 import scipy.io
 import gensim
 import numpy as np

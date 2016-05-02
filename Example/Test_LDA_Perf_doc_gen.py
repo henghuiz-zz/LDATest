@@ -39,4 +39,4 @@ if __name__ == '__main__':
     plt.title('MSE versus number of documents generated in the corpus')
     plt.legend(loc='upper center')
     plt.savefig('../Data/MSE_doc_gen.png')
-    #plt.show()
+    plt.show()

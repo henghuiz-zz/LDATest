@@ -1,12 +1,4 @@
-''' 
-This code is used to generate corpus by LDA model
-
-Created on Apr 16, 2016
-@author: zhhtc200
-'''
-
 import numpy as np
-
 
 class LDATestSample:
     def __init__(self,
@@ -23,7 +15,6 @@ class LDATestSample:
 
         for i in range(num_doc_gen):
             mcorpus.append([])
-            #doc_len = np.random.poisson(lam=ave_len)
             doc_len = ave_len
             theta = Theta[:, i]
             doc_beta = Beta.dot(theta)
@@ -31,7 +22,6 @@ class LDATestSample:
             w = np.random.multinomial(doc_len, doc_beta)
             Word.append(w)
             for j in range(num_word_gen):
-                # if w[j]!=0:
                 mcorpus[i].append((j, w[j]))
         self.Beta = Beta
         self.Theta = Theta

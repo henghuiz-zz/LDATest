@@ -1,9 +1,3 @@
-'''
-Created on Apr 16, 2016
-
-@author: zhhtc200
-'''
-
 import numpy as np
 from scipy.stats import entropy
 from numpy import dtype
@@ -63,9 +57,6 @@ def AdjustLabel(BetaReal,BetaPredict):
         lenQ = len(queryReal)
     
     return mapping
-    #print queryPredict
-    
-    return 0
 
 if __name__ == '__main__':
     BetaReal = [[.1, .9],[.8, .2]]

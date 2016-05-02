@@ -27,11 +27,7 @@ def Try_Syn_Data(num_doc_gen=200,
     Loss = 0
     ThetaPredict = ThetaPredict[:, Re2Pr]
     
-    Loss = np.square(np.linalg.norm(ThetaPredict-ThetaReal))  
-    
-    #for i in range(num_topic):
-    #    Loss += np.square(np.linalg.norm(ThetaReal[:, i] - ThetaPredict[:, i]))
-        
+    Loss = np.square(np.linalg.norm(ThetaPredict-ThetaReal))
     KLoss = LDATest.CmpKMeans.Corpus_K_Means(TestSample,num_topic)
     
     return (Loss/num_doc_gen, KLoss/num_doc_gen)

@@ -13,8 +13,6 @@ def Corpus_K_Means(TestSample,num_topic):
     estimators.fit(W)
     BetaPredict=estimators.cluster_centers_
 
-    #BetaPredict, I = kmeans2(W,num_topic,iter=100)
-    
     Q = 2*BetaPredict.dot(BetaPredict.transpose())
     Q = matrix(Q)
     P = W.dot(BetaPredict.transpose())
@@ -35,8 +33,6 @@ def Corpus_K_Means(TestSample,num_topic):
         
     Err = ThetaPredict - Theta
 
-    #print Err    
-    
     return np.square(np.linalg.norm(Err))
 if __name__ == '__main__':
    import LDATest.GenCorpus

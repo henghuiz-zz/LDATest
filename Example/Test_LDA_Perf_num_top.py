@@ -40,4 +40,4 @@ if __name__ == '__main__':
     plt.title('Adjusted MSE versus number of topics')
     plt.legend(loc='upper center')
     plt.savefig('../Data/MSE_num_top.png')
-    #plt.show()
+    plt.show()

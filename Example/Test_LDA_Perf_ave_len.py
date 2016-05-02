@@ -40,4 +40,4 @@ if __name__ == '__main__':
     plt.title('MSE versus average length of documents')
     plt.legend(loc='upper center')
     plt.savefig('../Data/MSE_ave_len.png')
-    #plt.show()
+    plt.show()

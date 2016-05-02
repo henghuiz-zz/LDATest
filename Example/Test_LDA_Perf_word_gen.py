@@ -42,4 +42,4 @@ if __name__ == '__main__':
     plt.title('MSE versus vocabulary size')
     plt.legend(loc='upper center')
     plt.savefig('../Data/MSE_word_gen.png')
-    #plt.show()
+    plt.show()
