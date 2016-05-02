@@ -14,7 +14,7 @@ class LDATestSample:
                  num_word_gen=100,
                  num_topic=10,
                  ave_len=200,
-                 alpha=.2,
+                 alpha=.1,
                  beta=.1):
         mcorpus = []
         Word = []
