@@ -66,5 +66,3 @@ if __name__ == '__main__':
     p = np.array([1.0/10, 9.0/10, 0])
     q = np.array([1.0/10, 0, 9.0/10])
     print JSP(p, q)
-    
-    pass
