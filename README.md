@@ -6,4 +6,6 @@ This is the supplementary files for final project of BU EC 503, *Latent Dirichle
 2. Provide the matching algorithm to calibrate the indexes of the ground true synthetic beta and the beta obtained by LDA analysis.
 3. Use K means to perform LDA analysis as baseline.
 
+Some examples are provided in the Example folder.
+
 Henghui Zhu.
